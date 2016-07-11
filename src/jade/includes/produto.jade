@@ -1,0 +1,48 @@
+article.detail(itemscope itemtype="http://schema.org/Product")
+	h2.detail__col-full.detail__title(itemprop="name") #{data.product}
+	.detail__row
+		figure.detail__col.detail__img
+			img(itemprop="image" src="#{data.img.normal}" srcset="#{data.img.normal} 1x, #{data.img.retina} 2x" alt="#{data.product}")
+		section.detail__col.detail__info
+			.detail__price(itemprop="offers" itemscope itemtype="http://schema.org/Offer")
+				span(itemprop="priceCurrency" content="USD") $
+				span(itemprop="price" content="#{data.price}") #{data.price}
+			form.detail__frm.ch-form(action="#addCar" method="POST" novalidate="novalidate")
+				.ch-form-row
+					label(for="quantity") Quantity
+					select#quantity
+						each q in [1, 2, 3, 4, 5]
+							option(value='#{q}') #{q}
+				.ch-form-row
+					label(for="payaments") Payaments
+					select#payaments
+						each q in [1, 2, 3, 4, 5]
+							option(value='#{q}') #{q}
+				.ch-form-actions
+					button.ch-btn(type="submit") Buy
+					.ch-form-hint MercadoLibre isn’t the owner of this product
+			.detail__more
+				h3 More products
+				#moreProducts.carousel
+					each img in data.more_products
+						.carousel-cell(itemscope itemtype="http://schema.org/SomeProducts" itemid="#product")
+							img(itemprop="image" src="#{img.normal}" srcset="#{img.normal} 1x, #{img.retina} 2x" alt="#{img.product}" width="150" height="150")
+	.detail__tab
+		input#panelCtrl1.panel-radios(type='radio' name='tab-radios' checked)
+		input#panelCtrl2.panel-radios(type='radio' name='tab-radios')
+		ul.tabs
+			li.tabs__panel.tabs__panel-1
+				label.tabs__label(for='panelCtrl1') Product description
+			li.tabs__panel.tabs__panel-2
+				label.tabs__label(for='panelCtrl2') Questions
+		article.panels
+			section.panel.panel-1
+				p(itemprop="description") #{data.description}
+			section.panel.panel-2
+				each question in data.questions
+					.ch-box-info
+						h3 Buyer
+						p #{question.buyer}
+					.ch-box-ok
+						h3 Seller
+						p #{question.seller}

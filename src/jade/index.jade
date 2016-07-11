@@ -1,0 +1,10 @@
+extends ./base/layout.jade
+
+block content
+	include ./includes/produto.jade
+
+block scripts
+	if (isDev)
+		script(async, src='js/app.js')
+	else
+		script(async, src='js/app.min.js')

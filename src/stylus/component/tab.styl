@@ -1,0 +1,72 @@
+totalTabs = 2
+active-menu()
+	color: cor.blue
+	background-color: lighten(cor.tab, 25%)
+
+active-bar(v)
+	&:last-child:before
+		transform: translate3d(0, (v)%, 0)
+		+above('m')
+			transform: translate3d((v)%, 0, 0)
+
+active-panel()
+	max-height: initial
+	opacity: 1
+	padding: $main-padding
+
+.panel-radios
+	display: none
+
+.tabs
+	list-style: none
+	margin: 0
+	background-color: cor.tab
+	display: flex
+	flex-flow: column wrap
+	+above('m')
+		flex-flow: row wrap
+
+.tabs__panel
+	position: relative
+	z-index: 1
+	display: block
+	margin: 0
+	text-align: center
+	flex: 1
+	&:last-child:before
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 100%
+		height: @width
+		box-sizing: border-box
+		border-bottom: 4px solid cor.blue
+		content: ''
+		will-change: transform
+		transition: transform 0.3s
+
+.tabs__label
+	display block
+	padding 1em 0
+
+.panels
+	width: 100%
+	box-sizing: border-box
+	padding: 10px 0
+
+.panel
+	max-height: 0
+	opacity: 0
+	will-change: opacity
+	transition: opacity 0.5s
+	overflow-y: hidden
+
+for num in (1..totalTabs)
+	#panelCtrl{num}:checked ~ .panels > .panel-{num}
+		active-panel()
+
+	#panelCtrl{num}:checked ~ .tabs > .tabs__panel
+		active-bar((num - totalTabs) * 100)
+
+	#panelCtrl{num}:checked ~ .tabs > .tabs__panel-{num} > .tabs__label
+		active-menu()

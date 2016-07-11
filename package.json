@@ -1,0 +1,46 @@
+{
+  "name": "lagden-ml",
+  "version": "1.0.0",
+  "description": "Apenas um show",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=prod gulp build",
+    "uglify": "uglifyjs dev/js/app.js -o build/js/app.min.js --source-map build/js/app.min.js.map -p 5 -c -m",
+    "prestart": "gulp",
+    "start": "ws -d dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lagden/ml.git"
+  },
+  "keywords": [
+    "teste",
+    "ml"
+  ],
+  "author": "Thiago Lagden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lagden/ml/issues"
+  },
+  "homepage": "https://github.com/lagden/ml#readme",
+  "devDependencies": {
+    "autoprefixer": "6.3.7",
+    "chico": "2.0.6",
+    "cssnano": "3.7.1",
+    "esformatter": "0.9.5",
+    "flickity": "2.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-concat": "2.6.0",
+    "gulp-jade": "1.1.0",
+    "gulp-postcss": "6.1.1",
+    "gulp-stylus": "2.5.0",
+    "lagden-promisify": "2.0.0",
+    "local-web-server": "1.2.6",
+    "lost": "7.0.3",
+    "nib": "1.1.0",
+    "rupture": "0.6.1",
+    "uglify-js": "2.7.0",
+    "xo": "0.16.0"
+  }
+}
