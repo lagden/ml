@@ -35,6 +35,7 @@
     "gulp-jade": "1.1.0",
     "gulp-postcss": "6.1.1",
     "gulp-stylus": "2.5.0",
+    "gulplog": "1.0.0",
     "lagden-promisify": "2.0.0",
     "local-web-server": "1.2.6",
     "lost": "7.0.3",
